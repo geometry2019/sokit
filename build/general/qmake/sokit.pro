@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = sokit
 
 QT += gui network
+QT += widgets
 CONFIG += debug_and_release build_all thread
 DEFINES += QT_NETWORK_LIB
 INCLUDEPATH += . ./../../../tmp ./../../../src/sokit
