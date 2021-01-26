@@ -12,8 +12,6 @@ class Sokit :public QApplication
 public:
 	Sokit(int& argc, char** argv);
 	~Sokit();
-
-	bool initTranslator();
 	bool initUI();
 	void show();
 	void close();

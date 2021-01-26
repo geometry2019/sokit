@@ -5,8 +5,7 @@
     <name>ClientForm</name>
     <message>
         <location filename="clientform.ui" line="20"/>
-        <source>Client</source>
-        <translation type="unfinished">客户端</translation>
+        <source>Client</source>       <translation type="unfinished">客户端</translation>
     </message>
     <message>
         <location filename="clientform.ui" line="53"/>
@@ -74,7 +73,7 @@
     <message>
         <location filename="clientform.ui" line="508"/>
         <source>, Send</source>
-        <translation type="unfinished">, 发送</translation>
+        <translation>, 发送</translation>
     </message>
     <message>
         <location filename="clientform.ui" line="538"/>

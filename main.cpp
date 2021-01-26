@@ -9,6 +9,7 @@
 #include "transferform.h"
 #include "notepadform.h"
 #include "helpform.h"
+#include "httpform.h"
 #include "main.h"
 
 #define SET_KEY_FTNM "/font/name"
@@ -21,6 +22,7 @@
 Sokit::Sokit(int& argc, char** argv)
 :QApplication(argc,argv)
 {
+
 }
 
 Sokit::~Sokit()
@@ -56,85 +58,14 @@ void Sokit::initDefaultActionsName()
 	translate("QTextControl", "Select All");
 }
 
-bool Sokit::initTranslator()
-{
-	QString file = Setting::get(SET_SEC_CFG, SET_KEY_LANG, SET_VAL_LANG);
-
-	QStringList paths;
-	paths << "."
-        << "../share/" SET_APP_NAME
-        << "../share/apps/" SET_APP_NAME
-		<< Setting::path();
-
-	foreach (QString p, paths)
-	{
-		if (m_trans.load(file, p, "", SET_VAL_LANX))
-		{
-			installTranslator(&m_trans);
-			Setting::set(SET_SEC_CFG, SET_KEY_LANG, file);
-			break;
-		}
-	}
-
-	return true;
-}
 
 void Sokit::initFont()
 {
-	QFontDatabase db;
-	QStringList fs = db.families();
 
-	QFont font;
-
-	int match = 0;
-
-	QString family = Setting::get(SET_SEC_CFG, SET_KEY_FTNM, "").trimmed();
-	QString size    = Setting::get(SET_SEC_CFG, SET_KEY_FTSZ, "").trimmed();
-
-	if (family.isEmpty() || fs.filter(family).isEmpty())
-	{
-		QStringList defs = translate("Sokit", "font").split(";", QString::SkipEmptyParts);
-		foreach (QString d, defs)
-		{
-			family = d.section(',', 0, 0).trimmed();
-			size    = d.section(',', 1, 1).trimmed();
-
-			if (!family.isEmpty() && !fs.filter(family).isEmpty())
-			{
-				match = 2;
-				break;
-			}
-		}
-	}
-	else
-	{
-		match = 1;
-	}
-
-	if (match > 0)
-	{
-		font.setFamily(family);
-
-		if (db.isSmoothlyScalable(family))
-			font.setStyleStrategy((QFont::StyleStrategy)(QFont::PreferAntialias|QFont::PreferOutline|QFont::PreferQuality));
-
-		int nsize = size.toInt();
-		if (nsize > 0 && nsize < 20)
-			font.setPointSize(nsize);
-
-		setFont(font);
-
-		if (match > 1)
-		{
-			Setting::set(SET_SEC_CFG, SET_KEY_FTNM, family);
-			Setting::set(SET_SEC_CFG, SET_KEY_FTSZ, size);
-		}
-	}
 }
 
 bool Sokit::initUI()
 {
-	initTranslator();
 	initFont();
 
 	HelpForm* h = new HelpForm(&m_wnd, Qt::WindowCloseButtonHint);
@@ -144,7 +75,7 @@ bool Sokit::initUI()
     connect(k, SIGNAL(activated()), h, SLOT(exec()));
 	connect(t, SIGNAL(activated()), this, SLOT(ontop()));
 
-	m_wnd.setWindowTitle(translate("Sokit", "sokit -- F1 for help"));
+    m_wnd.setWindowTitle("Sokit 键入F1以打开帮助");
 	m_wnd.setWindowIcon(QIcon(":/sokit.png"));
 
 	QWidget* pnl = new QWidget(&m_wnd);
@@ -153,12 +84,15 @@ bool Sokit::initUI()
 	BaseForm* server = new ServerForm();
 	BaseForm* transf = new TransferForm();
 	BaseForm* client = new ClientForm();
+    BaseForm* httpf=new httpform();
 	NotepadForm* npd = new NotepadForm();
 
 	QTabWidget* tab = new QTabWidget(pnl);
 	tab->addTab(server, server->windowTitle());
+    tab->addTab(client, client->windowTitle());
 	tab->addTab(transf, transf->windowTitle());
-	tab->addTab(client, client->windowTitle());
+    tab->addTab(httpf,httpf->windowTitle());
+
 	tab->addTab(npd, npd->windowTitle());
 	tab->setCurrentIndex(0);
 

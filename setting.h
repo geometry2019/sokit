@@ -10,6 +10,7 @@
 #define SET_SEC_CFG  "config"
 #define SET_SEC_DIR  "dir"
 #define SET_KEY_LOG  "/log"
+#include <QString>
 
 class QComboBox;
 class QSettings;

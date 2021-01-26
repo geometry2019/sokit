@@ -4,6 +4,8 @@
 
 TEMPLATE = app
 TARGET = sokit
+QT += widgets
+QT += network
 INCLUDEPATH += .
 
 
@@ -11,6 +13,7 @@ HEADERS += baseform.h \
            clientform.h \
            clientskt.h \
            helpform.h \
+           httpform.h \
            logger.h \
            main.h \
            notepadform.h \
@@ -21,11 +24,13 @@ HEADERS += baseform.h \
            toolkit.h \
            transferform.h \
            transferskt.h
-FORMS += clientform.ui helpform.ui serverform.ui transferform.ui
+FORMS += clientform.ui helpform.ui serverform.ui transferform.ui \
+    httpform.ui
 SOURCES += baseform.cpp \
            clientform.cpp \
            clientskt.cpp \
            helpform.cpp \
+           httpform.cpp \
            logger.cpp \
            main.cpp \
            notepadform.cpp \
@@ -36,4 +41,3 @@ SOURCES += baseform.cpp \
            transferform.cpp \
            transferskt.cpp
 RESOURCES += icons.qrc
-TRANSLATIONS += sokit.ts

@@ -26,7 +26,16 @@
    <property name="spacing">
     <number>5</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>5</number>
+   </property>
+   <property name="topMargin">
+    <number>5</number>
+   </property>
+   <property name="rightMargin">
+    <number>5</number>
+   </property>
+   <property name="bottomMargin">
     <number>5</number>
    </property>
    <item>
@@ -52,7 +61,7 @@
         </size>
        </property>
        <property name="title">
-        <string>Network Setup</string>
+        <string>网络设置</string>
        </property>
        <layout class="QVBoxLayout" name="lay5">
         <property name="spacing">
@@ -75,14 +84,14 @@
           <property name="sizeConstraint">
            <enum>QLayout::SetFixedSize</enum>
           </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <property name="horizontalSpacing">
            <number>5</number>
           </property>
           <property name="verticalSpacing">
            <number>8</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
           </property>
           <item row="0" column="2">
            <widget class="QLabel" name="lab2">
@@ -93,7 +102,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Port:</string>
+             <string>端口：</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -118,7 +127,7 @@
              <enum>Qt::NoContextMenu</enum>
             </property>
             <property name="text">
-             <string>TCP Addr:</string>
+             <string>TCP监听地址：</string>
             </property>
             <property name="textFormat">
              <enum>Qt::PlainText</enum>
@@ -205,7 +214,7 @@
              <enum>Qt::NoContextMenu</enum>
             </property>
             <property name="text">
-             <string>UDP Addr:</string>
+             <string>UDP监听地址：</string>
             </property>
             <property name="textFormat">
              <enum>Qt::PlainText</enum>
@@ -255,7 +264,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Port:</string>
+             <string>端口：</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -369,7 +378,7 @@
         </size>
        </property>
        <property name="title">
-        <string>Connections</string>
+        <string>连接</string>
        </property>
        <layout class="QHBoxLayout" name="lay8">
         <property name="spacing">
@@ -459,7 +468,7 @@
              </size>
             </property>
             <property name="text">
-             <string>All</string>
+             <string>全选</string>
             </property>
            </widget>
           </item>
@@ -484,7 +493,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Disconn</string>
+             <string>踢出</string>
             </property>
            </widget>
           </item>
@@ -506,7 +515,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="lab5">
        <property name="text">
-        <string>Buf 1:</string>
+        <string>缓冲区1：</string>
        </property>
       </widget>
      </item>
@@ -525,7 +534,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Send</string>
+        <string>发送</string>
        </property>
        <property name="checkable">
         <bool>false</bool>
@@ -535,7 +544,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="lab6">
        <property name="text">
-        <string>Buf 2:</string>
+        <string>缓冲区2：</string>
        </property>
       </widget>
      </item>
@@ -570,14 +579,14 @@
         </size>
        </property>
        <property name="text">
-        <string>Send</string>
+        <string>发送</string>
        </property>
       </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="lab7">
        <property name="text">
-        <string>Buf 3:</string>
+        <string>缓冲区3：</string>
        </property>
       </widget>
      </item>
@@ -612,7 +621,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Send</string>
+        <string>发送</string>
        </property>
       </widget>
      </item>
@@ -660,14 +669,14 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Output:    </string>
+        <string>输出：</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="lab9">
        <property name="text">
-        <string>Recv</string>
+        <string>收到</string>
        </property>
       </widget>
      </item>
@@ -690,7 +699,7 @@
      <item>
       <widget class="QLabel" name="lab10">
        <property name="text">
-        <string>, Send</string>
+        <string>，发送</string>
        </property>
       </widget>
      </item>
@@ -720,7 +729,7 @@
      <item>
       <widget class="QCheckBox" name="chkLog">
        <property name="text">
-        <string>Write log</string>
+        <string>写入日志</string>
        </property>
       </widget>
      </item>
@@ -739,7 +748,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Clear</string>
+        <string>清空</string>
        </property>
       </widget>
      </item>
